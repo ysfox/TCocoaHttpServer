@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56E942B0E6258F43E14F3E2A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BB6FC88E85FAA80D8C3C2B /* libPods.a */; };
 		A2F0FE661BD2031D00ACBEC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F0FE651BD2031D00ACBEC6 /* main.m */; };
 		A2F0FE691BD2031D00ACBEC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F0FE681BD2031D00ACBEC6 /* AppDelegate.m */; };
 		A2F0FE6C1BD2031D00ACBEC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F0FE6B1BD2031D00ACBEC6 /* ViewController.m */; };
@@ -14,6 +15,7 @@
 		A2F0FE711BD2031D00ACBEC6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FE701BD2031D00ACBEC6 /* Images.xcassets */; };
 		A2F0FE741BD2031D00ACBEC6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FE721BD2031D00ACBEC6 /* LaunchScreen.xib */; };
 		A2F0FE801BD2031D00ACBEC6 /* TCocoaHttpServerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F0FE7F1BD2031D00ACBEC6 /* TCocoaHttpServerTests.m */; };
+		A2F0FE8A1BD225EE00ACBEC6 /* webset in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FE891BD225EE00ACBEC6 /* webset */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14BB6FC88E85FAA80D8C3C2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8500A3F84360F1F3AC5A732D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		910195077B6DB95BFD6C2396 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A235B4201BD2280D004F6C10 /* TCocoaHttpServer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TCocoaHttpServer-Prefix.pch"; sourceTree = "<group>"; };
 		A2F0FE601BD2031D00ACBEC6 /* TCocoaHttpServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCocoaHttpServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F0FE641BD2031D00ACBEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2F0FE651BD2031D00ACBEC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +46,7 @@
 		A2F0FE791BD2031D00ACBEC6 /* TCocoaHttpServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCocoaHttpServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F0FE7E1BD2031D00ACBEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2F0FE7F1BD2031D00ACBEC6 /* TCocoaHttpServerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCocoaHttpServerTests.m; sourceTree = "<group>"; };
+		A2F0FE891BD225EE00ACBEC6 /* webset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = webset; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E942B0E6258F43E14F3E2A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +68,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145D8060AC1F951D0AE44964 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8500A3F84360F1F3AC5A732D /* Pods.debug.xcconfig */,
+				910195077B6DB95BFD6C2396 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		65C473916EF1270054A91FD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14BB6FC88E85FAA80D8C3C2B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A2F0FE571BD2031D00ACBEC6 = {
 			isa = PBXGroup;
 			children = (
 				A2F0FE621BD2031D00ACBEC6 /* TCocoaHttpServer */,
 				A2F0FE7C1BD2031D00ACBEC6 /* TCocoaHttpServerTests */,
 				A2F0FE611BD2031D00ACBEC6 /* Products */,
+				145D8060AC1F951D0AE44964 /* Pods */,
+				65C473916EF1270054A91FD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +108,7 @@
 		A2F0FE621BD2031D00ACBEC6 /* TCocoaHttpServer */ = {
 			isa = PBXGroup;
 			children = (
+				A2F0FE891BD225EE00ACBEC6 /* webset */,
 				A2F0FE671BD2031D00ACBEC6 /* AppDelegate.h */,
 				A2F0FE681BD2031D00ACBEC6 /* AppDelegate.m */,
 				A2F0FE6A1BD2031D00ACBEC6 /* ViewController.h */,
@@ -96,6 +124,7 @@
 		A2F0FE631BD2031D00ACBEC6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A235B4201BD2280D004F6C10 /* TCocoaHttpServer-Prefix.pch */,
 				A2F0FE641BD2031D00ACBEC6 /* Info.plist */,
 				A2F0FE651BD2031D00ACBEC6 /* main.m */,
 			);
@@ -126,9 +155,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A2F0FE831BD2031D00ACBEC6 /* Build configuration list for PBXNativeTarget "TCocoaHttpServer" */;
 			buildPhases = (
+				3212582C750B71298C544881 /* Check Pods Manifest.lock */,
 				A2F0FE5C1BD2031D00ACBEC6 /* Sources */,
 				A2F0FE5D1BD2031D00ACBEC6 /* Frameworks */,
 				A2F0FE5E1BD2031D00ACBEC6 /* Resources */,
+				8BF44EE68BDAB763B6EB46C1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F0FE8A1BD225EE00ACBEC6 /* webset in Resources */,
 				A2F0FE6F1BD2031D00ACBEC6 /* Main.storyboard in Resources */,
 				A2F0FE741BD2031D00ACBEC6 /* LaunchScreen.xib in Resources */,
 				A2F0FE711BD2031D00ACBEC6 /* Images.xcassets in Resources */,
@@ -213,6 +245,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3212582C750B71298C544881 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8BF44EE68BDAB763B6EB46C1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A2F0FE5C1BD2031D00ACBEC6 /* Sources */ = {
@@ -345,9 +410,13 @@
 		};
 		A2F0FE841BD2031D00ACBEC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8500A3F84360F1F3AC5A732D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TCocoaHttpServer/TCocoaHttpServer-Prefix.pch";
 				INFOPLIST_FILE = TCocoaHttpServer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,9 +424,13 @@
 		};
 		A2F0FE851BD2031D00ACBEC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 910195077B6DB95BFD6C2396 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TCocoaHttpServer/TCocoaHttpServer-Prefix.pch";
 				INFOPLIST_FILE = TCocoaHttpServer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -416,6 +489,7 @@
 				A2F0FE851BD2031D00ACBEC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2F0FE861BD2031D00ACBEC6 /* Build configuration list for PBXNativeTarget "TCocoaHttpServerTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +498,7 @@
 				A2F0FE881BD2031D00ACBEC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

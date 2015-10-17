@@ -5,41 +5,98 @@
 //  Created by Ysfox on 15/10/17.
 //  Copyright (c) 2015年 Ysfox. All rights reserved.
 //
-
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "AppDelegate.h"
+#import "HTTPServer.h"
 
 @interface AppDelegate ()
-
+/** 服务器对象 */
+@property (nonatomic,strong) HTTPServer *httpServer;
 @end
 
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    //初始化日志
+    [self setupDDLog];
+    //开启服务器
+    [self setupHttpsever];
+    
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    [self startServer];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [_httpServer stop];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
+/** 设置DDLOG框架 */
+- (void)setupDDLog{
+    //添加日志器框架到 Apple System Logging (asl)这个可以在Console.app看见和Xcode console
+    [DDLog addLogger:[DDASLLogger sharedInstance]];           //这个是将日志打给苹果服务器，可以通过在Console.app
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];           //这个是将日志打印到控制台
+    
+    
+    //日志的筛选，筛选规则是通过DDLogLevel来决定只显示那些日志
+    //[DDLog addLogger:[DDTTYLogger sharedInstance] withLevel:DDLogLevelError]; 只显示错误日志的信息
+    
+    // 开启日志等级颜色
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+    // 设置不同等级日志的颜色
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor redColor] backgroundColor:nil forFlag:DDLogFlagError];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor yellowColor] backgroundColor:nil forFlag:DDLogFlagWarning];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor greenColor] backgroundColor:nil forFlag:DDLogFlagInfo];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor orangeColor] backgroundColor:nil forFlag:DDLogFlagDebug];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor whiteColor] backgroundColor:nil forFlag:DDLogFlagVerbose];
+    
+    
+    //告诉应用多久保存一次日志文件
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];
+    fileLogger.rollingFrequency = 60 * 60 * 24;
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    [DDLog addLogger:fileLogger];
+    DDLogInfo(@"dir is %@", fileLogger.logFileManager.logsDirectory);
+    
+    
+    DDLogError(@"错误信息");
+    DDLogWarn(@"警告消息");
+    DDLogInfo(@"提示信息");
+    DDLogDebug(@"调试信息");
+    DDLogVerbose(@"冗长信息");
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+/** 初始化http服务器 */
+- (void)setupHttpsever{
+    _httpServer = [[HTTPServer alloc]init];         //初始化服务器
+    [_httpServer setType:@"_http._tcp."];           //设置服务器类型
+    //获取网页地址
+    NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"webset"];
+    DDLogInfo(@"Setting document root: %@", webPath);
+    [_httpServer setDocumentRoot:webPath];          //设置服务器根路径
+    [_httpServer setPort:80];                    //设置端口
+    [self startServer];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+/** 开启服务器 */
+- (void)startServer
+{
+    NSError *error;
+    if ([_httpServer start:&error]){
+        DDLogInfo(@"%@",[NSString stringWithFormat:@"Started HTTP Server\nhttp://%@:%hu", [_httpServer hostName], [_httpServer listeningPort]]);
+    }else{
+        DDLogError(@"Error Started HTTP Server:%@", error);
+    }
+
 }
 
 @end
